@@ -1,0 +1,13 @@
+  
+<section class="text-center m-5">
+    <% if current_user %>
+        <h1 class="text-center" >Welcome <%= current_user.name%></h1>
+        <h5><%= current_user.email %></h5>
+    <%end%>
+    <%=
+        link_to_if(current_user.nil?, "Login", new_user_session_path, class: 'btn btn-primary m-5') do
+            link_to('Sign out',  destroy_user_session_path, :method => 'delete', class: 'btn btn-danger m-5')
+        end
+    %>
+
+</section>
