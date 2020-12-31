@@ -1,4 +1,4 @@
-# Shopify Applcation Challenge
+# Shopify Application Challenge
 
 ## Docker setup
 
