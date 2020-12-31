@@ -48,3 +48,4 @@ and have them added to your account. The store can also be updated and images ca
 
 ## References
 * https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp
+* https://guides.rubyonrails.org/getting_started.html
