@@ -44,7 +44,18 @@ and have them added to your account. The store can also be updated and images ca
   * For now every user can edit the store, but in future versions of this app, only admin users can edit the store
 * User Items
   * A user can have many images or store items so this model keeps track of which users have bought what and at what quantities
-  * Each time an item is bought it checks if there is stock or the user has enough dough to make the purchase
+  * Each time an item is bought it checks if there is stock or the user has enough dough to make the purchase 
+
+### Things I would like to add
+If were to use this in production there are a few more things I would like to add: 
+* Store editable only by admins
+* Store items searchable using image classifications 
+* Sharing images from one user to another
+
+## Technology/Concepts Used
+* Docker for dev environment
+* Ruby on Rails
+* CRUD
 
 ## References
 * https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp
