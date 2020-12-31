@@ -1,42 +1,50 @@
-# Shopify Image Repo
+# Shopify Applcation Challenge
 
-Summer 2021 - Shopify
-Developer Intern Challenge Question
+## Docker setup
 
-You can save your work in a text file, link, etc. and have it ready with you for your technical interview (you can also add it on GitHub). 
+This application was made using a docker container, to contain all dependencies and expedite the 
+initial setup. The docker daemon can be started by using the following command:
 
-## TASK: Build an image repository.
+```
+docker-compose run --rm --service-ports ruby_dev
+```
 
-You can tackle this challenge using any technology you want. This is an open-ended task.
+This will create a container which will automatically download/install the required tools and 
+package managers.
 
-Please provide brief instructions on how to use your application.
+## Server start
 
-Extra Information: You can, if you wish, use frameworks, libraries and external dependencies to help you get faster to the parts you are interested in building, if this helps you; or start from scratch.
 
-Please focus on what interests you the most. If you need inspiration, here are examples of what you can work on. IF you work on these ideas, we recommend choosing only one or two.
+This application was written in Rails, so to start the server, change directories `cd image_repo` 
+and run `bundle install` to install all the required packages and use the following command to start to server:
 
-Ideas:
+```
+rails server -e development -p $PORT -b 0.0.0.0
+```
 
-* SEARCH function
-   * from characteristics of the images
-   * from text
-   * from an image (search for similar images)
- 
-* ADD image(s) to the repository
-  * one / bulk / enormous amount of images
-  * private or public (permissions)
-  * secure uploading and stored images
+This will run the server at `localhost:3000`
 
-* DELETE image(s)
-   * one / bulk / selected / all images
-   * Prevent a user deleting images from another user (access control)
-   * secure deletion of images
+## About the app
 
-* SELL/BUY images
-  * ability to manage inventory
-  * set price
-  * discounts
-  * handle money
+This application acts as a store, where you can create an account and buy images from the store 
+and have them added to your account. The store can also be updated and images can be added to it.
+
+### Implemented features:
+
+* User
+  * Users were implemented using the `devise` gem, but the views and user model were extended to fit the context of this application 
+  * By default devise checks for things like duplicate users, and has built in session management, so it was really delightful working with this gem
+  * Devise also is really easily extendable so I was able to add fields and customize the controllers for it right away
+* UserAccounts
+  * UserAccounts have a *one-to-one* relationship with a user, and store information like wallet and etc..
+* Store
+  * The image store is basically just a bunch of images that are accessible from the asset pipeline, and each image is kept track of by the `store_item` table in the database
+  * Each store item can be updated to change the price or quantity, but the image cannot be changed
+  * New items can be added and images can be uploaded through the store
+  * For now every user can edit the store, but in future versions of this app, only admin users can edit the store
+* User Items
+  * A user can have many images or store items so this model keeps track of which users have bought what and at what quantities
+  * Each time an item is bought it checks if there is stock or the user has enough dough to make the purchase
 
 ## References
 * https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp

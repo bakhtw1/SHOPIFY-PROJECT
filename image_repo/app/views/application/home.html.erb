@@ -3,6 +3,31 @@
     <% if current_user %>
         <h1 class="text-center" >Welcome <%= current_user.name%></h1>
         <h5><%= current_user.email %></h5>
+        <%= render 'user_accounts/form', user_account: @user_account %>
+        
+        <br/>
+        <h1>User Items</h1>
+
+        <div class = "container-fluid">
+            <% @user_images.each do |user_image| %>
+              <div class="card mb-3 border-primary">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <%= image_tag user_image[:imgurl], style: 'width:50%;height:auto'  %>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <p>Quantity: <%= user_image[:quantity] %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+        </div>
+        <br/>
+
+        <%= link_to 'Store', store_items_url, class: "btn btn-primary" %>
+
     <%end%>
     <%=
         link_to_if(current_user.nil?, "Login", new_user_session_path, class: 'btn btn-primary m-5') do

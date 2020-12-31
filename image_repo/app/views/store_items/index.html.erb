@@ -1,0 +1,35 @@
+<head>
+</head>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Store</h1>
+
+<%= link_to 'Account', root_url, class: "btn btn-primary" %>
+
+<div class = "container-fluid">
+    <% @store_items.each do |store_item| %>
+      <div class="card mb-3 border-primary">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <%= image_tag store_item.imageurl, style: 'width:50%;height:auto'  %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h2>Price: $<%= store_item.price %></h2>
+              <p>Quantity: <%= store_item.quantity %></p>
+              <%= link_to 'Edit', edit_store_item_path(store_item) %>
+              <%= link_to 'Destroy', store_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= button_to 'Buy', buy_item_path(store_item), action: "buy" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+
+
+<br>
+
+<%= link_to 'New Store Item', new_store_item_path %>

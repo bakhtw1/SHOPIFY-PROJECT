@@ -1,0 +1,23 @@
+<%= form_with(model: user_account) do |form| %>
+  <% if user_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_account.errors.count, "error") %> prohibited this user_account from being saved:</h2>
+
+      <ul>
+        <% user_account.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <h3>Wallet funds</h3>
+    <%= form.label :wallet %>
+    <%= form.number_field :wallet, step: 0.01 %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

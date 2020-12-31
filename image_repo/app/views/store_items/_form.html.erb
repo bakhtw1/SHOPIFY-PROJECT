@@ -1,0 +1,31 @@
+<%= form_with(model: store_item) do |form| %>
+  <% if store_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(store_item.errors.count, "error") %> prohibited this store_item from being saved:</h2>
+      
+      <ul>
+        <% store_item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price, min: 0, step: 0.01%>
+    <br/>
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, min: 0, step: 1%>
+    <br/>
+    <% if store_item.id.nil? %>
+      <%= form.label :imageupload %>
+      <%= form.file_field :imageupload %>
+    <% end %>
+  </div>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

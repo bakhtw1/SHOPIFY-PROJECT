@@ -1,0 +1,7 @@
+<div id="gallery">
+    <ul id="grid">
+        <% @images.each do |image| %>
+            <%= image_tag image, style: 'width:25%;height:auto' %>
+        <% end %>
+    </ul>
+</div>
