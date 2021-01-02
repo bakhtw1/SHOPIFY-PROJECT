@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
     def home
         @user_account = UserAccount.find_by_user_id(current_user.id)
-        @user_items = UserItem.where(user_id: 10).to_a
+        @user_items = UserItem.where(user_id: current_user.id).to_a
         @user_images = []
         
         @user_items.each do |user_item| 
